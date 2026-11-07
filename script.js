@@ -33,6 +33,38 @@
     window.SITE_PUBLICATIONS.forEach(paper => {
       const article = document.createElement('article');
       article.className = 'publication';
+      const details = document.createElement('div');
+      details.className = 'publication-details';
+      if (paper.figure) {
+        const figure = document.createElement('figure');
+        figure.className = 'publication-figure';
+        const imageLink = publicationLink('', paper.figure.src);
+        imageLink.className = 'publication-image-link';
+        imageLink.setAttribute('aria-label', language === 'zh' ? `查看 ${paper.title} 的完整配图` : `View the full figure for ${paper.title}`);
+        const image = document.createElement('img');
+        image.src = paper.figure.src;
+        image.alt = paper.figure.alt[language];
+        image.width = paper.figure.width;
+        image.height = paper.figure.height;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        imageLink.append(image);
+        const caption = document.createElement('figcaption');
+        const captionTitle = document.createElement('p');
+        captionTitle.className = 'publication-figure-caption';
+        captionTitle.textContent = paper.figure.caption[language];
+        const attribution = document.createElement('p');
+        attribution.className = 'publication-figure-attribution';
+        attribution.textContent = paper.figure.attribution;
+        const figureLinks = document.createElement('div');
+        figureLinks.className = 'publication-figure-links';
+        figureLinks.append(publicationLink(language === 'zh' ? '查看大图' : 'Full-size figure', paper.figure.src));
+        figureLinks.append(publicationLink(language === 'zh' ? '图片来源' : 'Source', paper.figure.source));
+        if (paper.figure.license) figureLinks.append(publicationLink('CC BY-SA 4.0', paper.figure.license));
+        caption.append(captionTitle, attribution, figureLinks);
+        figure.append(imageLink, caption);
+        article.append(figure);
+      }
       const heading = document.createElement('h3');
       heading.append(publicationLink(paper.title, paper.url));
       const authors = document.createElement(paper.authors.length > 12 ? 'details' : 'p');
@@ -58,19 +90,26 @@
       const venue = document.createElement('p');
       venue.className = 'publication-venue';
       venue.textContent = `${paper.venue}, ${paper.year}`;
-      article.append(heading, authors, venue);
+      details.append(heading, authors, venue);
+      if (paper.researchQuestion?.[language]) {
+        const question = document.createElement('p');
+        question.className = 'publication-question';
+        question.textContent = paper.researchQuestion[language];
+        details.append(question);
+      }
       if (paper.summary?.[language]) {
         const description = document.createElement('p');
         description.className = 'publication-summary';
         description.textContent = paper.summary[language];
-        article.append(description);
+        details.append(description);
       }
       const links = document.createElement('div');
       links.className = 'publication-links';
       links.append(publicationLink(language === 'zh' ? '论文' : 'Paper', paper.url));
       if (paper.pdf) links.append(publicationLink('PDF', paper.pdf));
       if (paper.citationFile) links.append(publicationLink('BibTeX', paper.citationFile, true));
-      article.append(links);
+      details.append(links);
+      article.append(details);
       fragment.append(article);
     });
     list.replaceChildren(fragment);

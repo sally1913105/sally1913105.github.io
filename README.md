@@ -10,7 +10,8 @@ The profile includes the owner's supplied portrait. Personal image metadata has 
 
 - `index.html`: page structure and default Chinese text.
 - `content.js`: Chinese and English copy. Edit the matching values in both languages.
-- `publications.js`: verified publication metadata, concise summaries, paper/PDF links, and citation file paths.
+- `publications.js`: verified publication metadata, research questions, method summaries, original figures, paper/PDF links, and citation file paths.
+- `assets/publications/`: original paper figures and source/attribution records. Clicking a figure opens its full-size version.
 - `styles.css`: layout, colors, and responsive styles.
 - `assets/citations/`: downloadable BibTeX entries with complete author lists.
 - `assets/`: portrait, favicon, and locally hosted fonts.
