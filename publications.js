@@ -18,7 +18,13 @@ window.SITE_PUBLICATIONS = [
     year: 2026,
     venue: "arXiv preprint",
     url: "https://arxiv.org/abs/2610.35044",
-    arxiv: "2610.35044"
+    arxiv: "2610.35044",
+    pdf: "https://arxiv.org/pdf/2610.35044",
+    citationFile: "assets/citations/driveunitok.bib",
+    summary: {
+      en: "DriveUniTok encodes visual appearance, projected LiDAR depth, and ego motion in a unified continuous latent representation. A downstream diffusion model predicts future latents, which the tokenizer decodes into multimodal predictions and driving trajectories for planning.",
+      zh: "DriveUniTok 将视觉外观、投影激光雷达深度与自车运动编码为统一连续潜变量。下游扩散模型预测未来潜变量，再解码为多模态未来状态和自车轨迹，支持驾驶预测与规划。"
+    }
   },
   {
     title: "Xiaomi OneVL: One-Step Latent Reasoning and Planning with Vision-Language Explanation",
@@ -77,6 +83,12 @@ window.SITE_PUBLICATIONS = [
     year: 2026,
     venue: "arXiv preprint",
     url: "https://arxiv.org/abs/2604.18486",
-    arxiv: "2604.18486"
+    arxiv: "2604.18486",
+    pdf: "https://arxiv.org/pdf/2604.18486",
+    citationFile: "assets/citations/onevl.bib",
+    summary: {
+      en: "OneVL learns latent chain-of-thought tokens supervised by language reconstruction and future visual prediction. It combines reasoning and planning for autonomous driving in a single parallel inference pass, while auxiliary decoders are used only during training.",
+      zh: "OneVL 通过语言重建和未来视觉预测联合监督潜在思维链，将视觉语言动作模型与世界模型结合。推理时移除辅助解码器，以一次并行计算完成潜在推理与驾驶规划。"
+    }
   }
 ];

@@ -1,11 +1,31 @@
 (() => {
   'use strict';
-  const toggle = document.querySelector('#language-toggle');
   const copy = window.SITE_COPY;
-  if (!copy || !toggle) return;
-  let language = 'zh';
-  try { language = localStorage.getItem('jiahui-language') === 'en' ? 'en' : 'zh'; } catch (_) { /* Storage may be unavailable in private contexts. */ }
+  const controls = document.querySelector('#language-controls');
+  if (!copy || !controls) return;
+  let language = 'en';
+  try {
+    const stored = localStorage.getItem('jiahui-language');
+    if (stored === 'en' || stored === 'zh') language = stored;
+  } catch (_) { /* Language selection works without storage. */ }
 
+  const isSelf = author => /^(Jiahui Huang|J\.\s?H\.\s?Huang|JH Huang)$/i.test(author);
+  function appendAuthorNames(container, names) {
+    names.forEach((author, index) => {
+      if (index) container.append(document.createTextNode(', '));
+      const name = document.createElement(isSelf(author) ? 'strong' : 'span');
+      name.textContent = author;
+      container.append(name);
+    });
+  }
+  function publicationLink(label, href, download = false) {
+    const link = document.createElement('a');
+    link.textContent = label;
+    link.href = href;
+    if (download) link.download = '';
+    else { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+    return link;
+  }
   function renderPublications() {
     const list = document.querySelector('#publications-list');
     if (!list || !Array.isArray(window.SITE_PUBLICATIONS)) return;
@@ -14,69 +34,79 @@
       const article = document.createElement('article');
       article.className = 'publication';
       const heading = document.createElement('h3');
-      const titleLink = document.createElement('a');
-      titleLink.href = paper.url;
-      titleLink.target = '_blank';
-      titleLink.rel = 'noopener noreferrer';
-      titleLink.textContent = paper.title;
-      heading.append(titleLink);
+      heading.append(publicationLink(paper.title, paper.url));
       const authors = document.createElement(paper.authors.length > 12 ? 'details' : 'p');
       authors.className = 'publication-authors';
-      const isSelf = author => /^(Jiahui Huang|J\.\s?H\.\s?Huang|JH Huang)$/i.test(author);
-      const appendNames = (container, names) => names.forEach((author, index) => {
-        if (index > 0) container.append(document.createTextNode(', '));
-        const name = document.createElement(isSelf(author) ? 'strong' : 'span');
-        name.textContent = author;
-        container.append(name);
-      });
       if (paper.authors.length > 12) {
         const summary = document.createElement('summary');
         const shortList = document.createElement('span');
         const selfIndex = paper.authors.findIndex(isSelf);
-        appendNames(shortList, paper.authors.slice(0, 3));
+        appendAuthorNames(shortList, paper.authors.slice(0, 3));
         if (selfIndex > 2) {
           shortList.append(document.createTextNode(', …, '));
-          appendNames(shortList, [paper.authors[selfIndex]]);
+          appendAuthorNames(shortList, [paper.authors[selfIndex]]);
         }
         shortList.append(document.createTextNode(', et al.'));
-        const expandLabel = document.createElement('span');
-        expandLabel.className = 'authors-expand';
-        expandLabel.textContent = language === 'zh' ? `全部作者 (${paper.authors.length})` : `All authors (${paper.authors.length})`;
-        summary.append(shortList, expandLabel);
-        const completeList = document.createElement('p');
-        appendNames(completeList, paper.authors);
-        authors.append(summary, completeList);
-      } else appendNames(authors, paper.authors);
-      const metadata = document.createElement('p');
-      metadata.className = 'publication-meta';
-      metadata.textContent = `${paper.venue} · ${paper.year} · arXiv:${paper.arxiv}`;
-      article.append(heading, authors, metadata);
+        const label = document.createElement('span');
+        label.className = 'authors-expand';
+        label.textContent = language === 'zh' ? `全部作者 (${paper.authors.length})` : `All authors (${paper.authors.length})`;
+        summary.append(shortList, label);
+        const fullList = document.createElement('p');
+        appendAuthorNames(fullList, paper.authors);
+        authors.append(summary, fullList);
+      } else appendAuthorNames(authors, paper.authors);
+      const venue = document.createElement('p');
+      venue.className = 'publication-venue';
+      venue.textContent = `${paper.venue}, ${paper.year}`;
+      article.append(heading, authors, venue);
+      if (paper.summary?.[language]) {
+        const description = document.createElement('p');
+        description.className = 'publication-summary';
+        description.textContent = paper.summary[language];
+        article.append(description);
+      }
+      const links = document.createElement('div');
+      links.className = 'publication-links';
+      links.append(publicationLink(language === 'zh' ? '论文' : 'Paper', paper.url));
+      if (paper.pdf) links.append(publicationLink('PDF', paper.pdf));
+      if (paper.citationFile) links.append(publicationLink('BibTeX', paper.citationFile, true));
+      article.append(links);
       fragment.append(article);
     });
     list.replaceChildren(fragment);
   }
-
   function applyLanguage(nextLanguage) {
     language = nextLanguage;
-    const dictionary = copy[language];
     document.documentElement.lang = language === 'zh' ? 'zh-CN' : 'en';
-    document.title = language === 'zh' ? 'Jiahui Huang · 个人主页' : 'Jiahui Huang · Personal website';
+    document.title = language === 'zh' ? 'Jiahui Huang | 计算机视觉与具身智能' : 'Jiahui Huang | Computer Vision & Embodied Intelligence';
     document.querySelectorAll('[data-i18n]').forEach(element => {
-      const value = dictionary[element.dataset.i18n];
+      const value = copy[language][element.dataset.i18n];
       if (typeof value === 'string') element.textContent = value;
     });
-    document.querySelector('[data-nav]').setAttribute('aria-label', language === 'zh' ? '主导航' : 'Main navigation');
-    document.querySelector('.brand').setAttribute('aria-label', language === 'zh' ? 'Jiahui Huang · 首页' : 'Jiahui Huang · Home');
-    document.querySelector('#hero-illustration').alt = language === 'zh' ? '两个视角中的几何特征点及其对应关系' : 'Geometric feature points and their correspondences across two viewpoints';
-    toggle.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换到中文');
-    document.querySelector('#lang-zh').classList.toggle('active', language === 'zh');
-    document.querySelector('#lang-en').classList.toggle('active', language === 'en');
+    document.querySelector('[data-nav]').setAttribute('aria-label', language === 'zh' ? '主页导航' : 'Main navigation');
+    document.querySelector('.profile-column').setAttribute('aria-label', language === 'zh' ? '个人学术信息' : 'Academic profile');
+    document.querySelector('.profile-name').setAttribute('aria-label', language === 'zh' ? 'Jiahui Huang，首页' : 'Jiahui Huang, home');
+    controls.setAttribute('aria-label', language === 'zh' ? '语言' : 'Language');
+    controls.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === language)));
     renderPublications();
-    document.dispatchEvent(new CustomEvent('site-language-change', { detail: language }));
-    try { localStorage.setItem('jiahui-language', language); } catch (_) { /* The page works without persisted settings. */ }
+    try { localStorage.setItem('jiahui-language', language); } catch (_) { /* Persistence is optional. */ }
   }
-  toggle.hidden = false;
-  toggle.addEventListener('click', () => applyLanguage(language === 'zh' ? 'en' : 'zh'));
+  controls.hidden = false;
+  controls.querySelectorAll('button').forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.language)));
   document.querySelector('#copyright-year').textContent = new Date().getFullYear();
   applyLanguage(language);
+  const navigation = Array.from(document.querySelectorAll('.section-nav a'));
+  function setCurrentSection(id) {
+    navigation.forEach(link => {
+      if (link.hash === `#${id}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) setCurrentSection(entry.target.id); });
+    }, { rootMargin: '-8% 0px -65% 0px', threshold: 0 });
+    document.querySelectorAll('.academic-section').forEach(section => observer.observe(section));
+  }
+  navigation.forEach(link => link.addEventListener('click', () => setCurrentSection(link.hash.slice(1))));
 })();
