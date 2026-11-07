@@ -8,6 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Jiahui Huang | Computer Vision & Embodied Intelligence">
   <meta property="og:description" content="Research interests, selected publications, professional experience, and postgraduate education.">
+  <meta property="og:image" content="https://sally1913105.github.io/assets/jiahui-huang.jpg">
   <meta property="og:url" content="https://sally1913105.github.io/">
   <link rel="canonical" href="https://sally1913105.github.io/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -27,9 +28,24 @@
     <symbol id="icon-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
   </svg>
   <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="site-header">
+    <a class="home-link" href="#top">Jiahui Huang</a>
+    <nav class="section-nav" data-nav aria-label="Main navigation">
+      <a href="#about" data-i18n="navAbout" aria-current="location">About</a>
+      <a href="#research" data-i18n="focusTitle">Research interests</a>
+      <a href="#publications" data-i18n="publicationsTitle">Selected publications</a>
+      <a href="#experience" data-i18n="navExperience">Experience</a>
+      <a href="#education" data-i18n="navEducation">Education</a>
+    </nav>
+    <div class="language-controls" id="language-controls" role="group" aria-label="Language" hidden>
+      <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-language="zh" lang="zh-CN" aria-pressed="false">中文</button>
+    </div>
+  </header>
   <div class="site-layout" id="top">
     <aside class="profile-column" aria-label="Academic profile">
       <div class="profile-inner">
+        <img class="profile-portrait" src="assets/jiahui-huang.jpg" width="176" height="176" alt="Jiahui Huang" fetchpriority="high" decoding="async">
         <a class="profile-name" href="#about" aria-label="Jiahui Huang, home"><h1>Jiahui Huang</h1></a>
         <p class="profile-role" data-i18n="sidebarRole">Algorithm Engineer</p>
         <p class="profile-affiliation" data-i18n="sidebarAffiliation">Xiaomi EV</p>
@@ -38,33 +54,23 @@
           <a href="https://scholar.google.com/citations?user=WqSa6isAAAAJ" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-scholar"/></svg><span>Google Scholar</span><svg class="icon external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
           <a href="https://github.com/sally1913105" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg><span>GitHub</span><svg class="icon external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
         </div>
-        <nav class="section-nav" data-nav aria-label="Main navigation">
-          <a href="#about" data-i18n="navAbout" aria-current="location">About</a>
-          <a href="#research" data-i18n="focusTitle">Research interests</a>
-          <a href="#publications" data-i18n="publicationsTitle">Selected publications</a>
-          <a href="#experience" data-i18n="navExperience">Experience</a>
-          <a href="#education" data-i18n="navEducation">Education</a>
-        </nav>
-        <div class="language-controls" id="language-controls" role="group" aria-label="Language" hidden>
-          <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-language="zh" lang="zh-CN" aria-pressed="false">中文</button>
-        </div>
       </div>
     </aside>
     <main id="main" class="main-column">
       <section id="about" class="academic-section biography-section" aria-labelledby="about-title">
-        <h2 id="about-title" data-i18n="aboutTitle">About</h2>
-        <p class="biography" data-i18n="aboutBody">I am an Algorithm Engineer at Xiaomi EV, where I have worked since February 2022. My current research focuses on vision-language-action (VLA) models for autonomous driving and robotic manipulation, as well as world models for action learning. My earlier work spans future BEV prediction and BEV pretraining, multi-camera and multi-task perception, and monocular 3D detection. I received an M.Eng. in Traffic and Transportation Engineering from Beihang University in January 2022.</p>
-        <p class="biography" data-i18n="aboutResearch">I am particularly interested in how 3D geometry and future-state prediction can support reasoning and policy learning in embodied systems.</p>
+        <h2 id="about-title" data-i18n="aboutTitle">About me</h2>
+        <p class="biography" data-i18n="aboutBody">I am an Algorithm Engineer at Xiaomi EV, working on embodied intelligence for autonomous driving and robotics. My current work focuses on vision-language-action (VLA) models and world models for action learning. I am a co-author of DriveUniTok and Xiaomi OneVL, both released as arXiv preprints in 2026.</p>
+        <p class="biography" data-i18n="aboutResearch">My research centers on how predictive world representations and 3D geometry can support reasoning and action generation. I am also interested in AI agents and agent harnesses, especially context management, tool use, and orchestration for reliable long-horizon task execution.</p>
+        <p class="biography" data-i18n="aboutBackground">Previously, I worked on future BEV prediction and BEV pretraining, multi-camera and multi-task perception, and monocular 3D detection. I received my M.Eng. in Traffic and Transportation Engineering from Beihang University in January 2022.</p>
         <p class="personal-note" data-i18n="personalNote">Outside of work, I enjoy hiking, cycling, swimming, and motorsports.</p>
       </section>
       <section id="research" class="academic-section research-section" aria-labelledby="research-title">
         <h2 id="research-title" data-i18n="focusTitle">Research interests</h2>
         <dl class="research-areas">
-          <div><dt data-i18n="researchArea3Title">Vision-language-action learning</dt><dd data-i18n="researchArea3Body">Studying joint language, vision, and action modeling, and the role of reasoning in driving and robotic manipulation policies.</dd></div>
-          <div><dt data-i18n="researchArea2Title">World models</dt><dd data-i18n="researchArea2Body">Studying action-conditioned future-state prediction and world models as representations and supervision for policy learning.</dd></div>
-          <div><dt data-i18n="researchArea1Title">Geometric scene representation</dt><dd data-i18n="researchArea1Body">Connecting visual representations to action learning through explicit 3D scene structure, spatial relationships, and geometric consistency.</dd></div>
-          <div><dt data-i18n="researchArea4Title">AI agents and agent harnesses</dt><dd data-i18n="researchArea4Body">Exploring how context management, agent orchestration, and systematic evaluation can support reliable tool use and long-horizon task execution.</dd></div>
+          <div><dt data-i18n="researchArea3Title">Vision-language-action learning</dt><dd data-i18n="researchArea3Body">Multimodal representations and reasoning for language-conditioned action generation in autonomous driving and robotic manipulation.</dd></div>
+          <div><dt data-i18n="researchArea2Title">World models</dt><dd data-i18n="researchArea2Body">Action-conditioned future prediction and world-action models that connect scene dynamics with policy learning and planning.</dd></div>
+          <div><dt data-i18n="researchArea1Title">Geometric scene representation</dt><dd data-i18n="researchArea1Body">BEV and 3D scene representations for spatially grounded perception, prediction, and action.</dd></div>
+          <div><dt data-i18n="researchArea4Title">AI agents and agent harnesses</dt><dd data-i18n="researchArea4Body">Context management, tool use, and agent orchestration for reliable long-horizon task execution and evaluation.</dd></div>
         </dl>
       </section>
       <section id="publications" class="academic-section publications-section" aria-labelledby="publications-title">

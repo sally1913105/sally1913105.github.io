@@ -4,6 +4,8 @@ Personal website, published with GitHub Pages at https://sally1913105.github.io/
 
 An academic profile with a concise biography, research interests, selected publications, professional experience, and postgraduate education. English is the default for new visitors; the language controls also provide Chinese and remember the reader's choice.
 
+The profile includes the owner's supplied portrait. Personal image metadata has been removed; the photograph's pixels are unchanged.
+
 ## Edit the site
 
 - `index.html`: page structure and default Chinese text.
@@ -11,7 +13,7 @@ An academic profile with a concise biography, research interests, selected publi
 - `publications.js`: verified publication metadata, concise summaries, paper/PDF links, and citation file paths.
 - `styles.css`: layout, colors, and responsive styles.
 - `assets/citations/`: downloadable BibTeX entries with complete author lists.
-- `assets/`: favicon and locally hosted fonts.
+- `assets/`: portrait, favicon, and locally hosted fonts.
 
 The site is static and does not require installation or a build step. Serve this directory with `python3 -m http.server 4173` for local preview.
 
