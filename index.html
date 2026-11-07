@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8faf7">
+  <meta name="description" content="Jiahui Huang 的个人主页。小米汽车算法工程师，北京航空航天大学硕士，关注计算机视觉、三维几何、世界模型与视觉语言动作学习。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jiahui Huang · Personal website">
+  <meta property="og:description" content="Algorithm Engineer at Xiaomi EV. Computer vision, 3D geometry, world models, and vision-language-action learning.">
+  <meta property="og:url" content="https://sally1913105.github.io/">
+  <link rel="canonical" href="https://sally1913105.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/manrope-regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <title>Jiahui Huang · 个人主页</title>
+  <script src="content.js" defer></script>
+  <script src="publications.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-9 9m-1-9H5v14h14v-4"/></symbol>
+    <symbol id="icon-github" viewBox="0 0 24 24"><path d="M9 19c-4 1-4-2-6-2m12 5v-3.4c0-.9-.3-1.6-.7-2 2.7-.3 5.5-1.3 5.5-6a4.7 4.7 0 0 0-1.3-3.3c.1-.3.6-1.6-.1-3.2 0 0-1.1-.3-3.5 1.3a12 12 0 0 0-6.4 0C6.1 3.8 5 4.1 5 4.1c-.7 1.6-.2 2.9-.1 3.2a4.7 4.7 0 0 0-1.3 3.3c0 4.7 2.8 5.7 5.5 6-.4.4-.7 1.1-.7 2V22"/></symbol>
+    <symbol id="icon-school" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5L2 9zm4 2v6c4 3 8 3 12 0v-6M22 9v7"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4M12 1v1"/></symbol>
+    <symbol id="icon-labs" viewBox="0 0 24 24"><path d="M8 3h8m-6 0v7L4 19c-.6 1 .1 2 1 2h14c.9 0 1.6-1 1-2l-6-9V3M7 15h10"/><circle cx="10" cy="17" r=".6"/><circle cx="14" cy="18" r=".6"/></symbol>
+    <symbol id="icon-up" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main" data-i18n="skip">跳到主要内容</a>
+  <header class="site-header wrap" id="top">
+    <a class="brand" href="#top" aria-label="Jiahui Huang · 首页"><span class="brand-mark" aria-hidden="true">jh<span>.</span></span><span>Jiahui Huang</span></a>
+    <nav class="desktop-nav" aria-label="主导航" data-nav>
+      <a href="#about" data-i18n="navAbout">关于</a>
+      <a href="#education" data-i18n="navEducation">教育</a>
+      <a href="#experience" data-i18n="navExperience">经历</a>
+      <a href="#research" data-i18n="navResearch">研究与论文</a>
+    </nav>
+    <button type="button" class="language-toggle" id="language-toggle" aria-label="Switch to English" hidden><span id="lang-zh" lang="zh-CN">中</span><span class="language-divider" aria-hidden="true">/</span><span id="lang-en" lang="en">EN</span></button>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title"><span>Jiahui</span><span>Huang<span class="name-period">.</span></span></h1>
+        <p class="hero-role" data-i18n="heroRole">算法工程师 · 计算机视觉</p>
+        <p class="hero-intro" data-i18n="heroIntro">在小米汽车从事算法研发，关注三维几何、世界模型与视觉语言动作学习。</p>
+        <div class="hero-links">
+          <a class="button button-primary" href="#research"><span data-i18n="heroPrimary">了解我的研究</span><svg class="icon" aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          <a class="text-link" href="https://scholar.google.com/citations?user=WqSa6isAAAAJ" target="_blank" rel="noopener noreferrer"><span data-i18n="heroSecondary">Google Scholar</span><svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <div class="figure-surface"><img src="assets/feature-correspondence.svg" width="620" height="500" alt="两个视角中的几何特征点及其对应关系" id="hero-illustration" fetchpriority="high"></div>
+        <figcaption><span data-i18n="figureCaption">从视觉感知，到理解与行动。</span><span class="figure-note" data-i18n="figureNote">特征对应 · 概念示意</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="about-section section wrap" id="about" aria-labelledby="about-title">
+      <div class="section-heading"><h2 id="about-title" data-i18n="aboutTitle">关于我</h2><span class="section-accent" aria-hidden="true"></span></div>
+      <div class="about-content">
+        <p class="about-body" data-i18n="aboutBody">我是 Jiahui Huang，目前在小米汽车担任算法工程师。我的工作从自动驾驶感知出发，逐步延伸到 BEV 表征学习、三维几何世界模型，以及面向驾驶和机器人操作的视觉语言动作学习。</p>
+        <div class="research-focus"><h3 data-i18n="focusTitle">关注方向</h3><ul class="focus-list"><li data-i18n="focus1">计算机视觉与三维几何</li><li data-i18n="focus2">世界模型</li><li data-i18n="focus3">视觉语言动作模型</li><li data-i18n="focus4">自动驾驶与机器人操作</li></ul></div>
+      </div>
+    </section>
+
+    <section class="education-section section wrap" id="education" aria-labelledby="education-title">
+      <div class="section-heading"><h2 id="education-title" data-i18n="educationTitle">教育背景</h2><span class="section-accent" aria-hidden="true"></span></div>
+      <div class="education-content">
+        <div class="education-block">
+          <svg class="icon school-icon" aria-hidden="true"><use href="#icon-school"/></svg>
+          <div><h3 data-i18n="schoolName">北京航空航天大学</h3><p data-i18n="degreeName">交通运输工程硕士</p></div>
+          <span class="education-period" data-i18n="schoolPeriod">2019.09 — 2022.01</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience-section section wrap" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading"><h2 id="experience-title" data-i18n="experienceTitle">工作经历</h2><span class="section-accent" aria-hidden="true"></span></div>
+      <div class="experience-content">
+        <div class="employer-heading"><div><h3 data-i18n="employerName">小米汽车</h3><p data-i18n="employerRole">算法工程师</p></div><span class="date" data-i18n="employerPeriod">2022.02 — 至今</span></div>
+        <p class="employer-summary" data-i18n="employerSummary">从视觉感知到表征学习，再到面向行动的世界模型。</p>
+        <ol class="timeline">
+          <li><span class="timeline-year">2026</span><div><h4 data-i18n="stage2026Title">世界模型与视觉语言动作学习</h4><p data-i18n="stage2026Body">围绕三维几何世界模型、视觉到动作学习，以及面向驾驶和机器人操作的 VLA 方法开展研究。</p></div></li>
+          <li><span class="timeline-year">2025</span><div><h4 data-i18n="stage2025Title">BEV 预训练与表征学习</h4><p data-i18n="stage2025Body">探索视觉基础模型语义蒸馏、未来 BEV 预测与表征评测。</p></div></li>
+          <li><span class="timeline-year">2024</span><div><h4 data-i18n="stage2024Title">行泊一体感知</h4><p data-i18n="stage2024Body">多相机融合、多任务训练与视觉检测模型优化。</p></div></li>
+          <li><span class="timeline-year">2022 — 23</span><div><h4 data-i18n="stage2022Title">前视单目感知</h4><p data-i18n="stage2022Body">单目三维检测、几何深度估计与感知模型的工程部署。</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="research-section section wrap" id="research" aria-labelledby="research-title">
+      <div class="section-heading"><h2 id="research-title" data-i18n="researchTitle">研究与论文</h2><span class="section-accent" aria-hidden="true"></span></div>
+      <div class="research-content">
+        <div class="research-intro-row"><p data-i18n="researchIntro">探索三维几何、世界模型与视觉语言动作学习。</p><a class="text-link scholar-link" href="https://scholar.google.com/citations?user=WqSa6isAAAAJ" target="_blank" rel="noopener noreferrer"><span>Google Scholar</span><svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a></div>
+        <div id="publications-list" class="publications-list"></div>
+        <article class="ongoing-research"><span class="status-label" data-i18n="researchStatus">研究进行中 · 手稿准备中</span><h3 data-i18n="researchName">面向驾驶与机器人操作的视觉语言动作学习</h3><p data-i18n="researchBody">探索三维几何与世界模型如何支持语言条件下的决策和行动学习。</p></article>
+      </div>
+    </section>
+
+    <section class="contact-section wrap" id="contact" aria-labelledby="contact-title"><div class="contact-copy"><h2 id="contact-title" data-i18n="contactTitle">保持联系。</h2><p data-i18n="contactBody">欢迎交流计算机视觉、三维几何、世界模型与视觉语言动作学习相关的研究想法。</p></div><a class="button button-primary" href="https://github.com/sally1913105" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-github"/></svg><span data-i18n="contactLink">在 GitHub 找到我</span><svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a></section>
+  </main>
+
+  <footer class="site-footer wrap"><p>© <span id="copyright-year">2026</span> Jiahui Huang<span class="footer-note" data-i18n="footerNote">保持好奇，持续探索。</span></p><a class="back-top" href="#top"><span data-i18n="backToTop">回到顶部</span><svg class="icon" aria-hidden="true"><use href="#icon-up"/></svg></a></footer>
+</body>
+</html>
